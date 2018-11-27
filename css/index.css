@@ -53,6 +53,16 @@ button:focus {
 .modal .modal-content {
   background-image: linear-gradient(to bottom, indianred, lightpink);
 }
+.modal .modal-header {
+  position: relative;
+}
+.modal .modal-header .error {
+  position: absolute;
+  padding: 8px 20px 8px 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .modal .modal-title, .modal-header button, .modal label {
   color: white;
 }
