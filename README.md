@@ -1,2 +1,2 @@
-# quiz
-quiz with Node.js
+# Quiz
+Quiz with Node.js
