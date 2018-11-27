@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>BroQuiz</title>
+    <link rel="stylesheet" href="/vendors/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendors/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/index.css">
   </head>
@@ -12,10 +13,83 @@
         <h1 class="title">BroQuiz</h1>
       </div>
       <div class="block-button">
-        <button class="button" type="button">Se connecter</button>
-        <button class="button" type="button">S'inscrire</button>
+        <button class="button" type="button" data-toggle="modal" data-target="#modalSignin">Se connecter</button>
+        <button class="button" type="button" data-toggle="modal" data-target="#modalSignup">S'inscrire</button>
       </div>
     </div>
+
+    <!-- Modal Signin -->
+    <div class="modal fade" id="modalSignin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalSigninTitle">Connexion</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary btn-modal">Valider</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Signup -->
+    <div class="modal fade" id="modalSignup" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalSignupTitle">Inscription</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form class="" action="index.html" method="post">
+              <div class="md-form mb-4">
+                <label for="pseudo">Pseudo</label>
+                <input type="text" id="pseudo" class="form-control validate">
+              </div>
+
+              <div class="md-form mb-4">
+                <label data-error="wrong" data-success="right" for="defaultForm-pass">Mot de passe</label>
+                <input type="password" id="defaultForm-pass" class="form-control validate">
+              </div>
+
+              <div class="md-form mb-4">
+                <label data-error="wrong" data-success="right" for="defaultForm-pass">Confirmation mot de passe</label>
+                <input type="password" id="defaultForm-pass" class="form-control validate">
+              </div>
+
+              <div class="md-form mb-4">
+                <label data-error="wrong" data-success="right" for="defaultForm-pass">Email</label>
+                <input type="password" id="defaultForm-pass" class="form-control validate">
+              </div>
+
+              <div class="md-form mb-4">
+                <label data-error="wrong" data-success="right" for="defaultForm-pass">Confirmation email</label>
+                <input type="password" id="defaultForm-pass" class="form-control validate">
+              </div>
+
+              <div class="md-form mb-4">
+                <label data-error="wrong" data-success="right" for="defaultForm-pass">Pays</label>
+                <input type="password" id="defaultForm-pass" class="form-control validate">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+            <button type="button" class="btn btn-primary btn-modal">Valider</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="/vendors/js/jquery-3.3.1.min.js" charset="utf-8"></script>
     <script src="/vendors/js/bootstrap.min.js" charset="utf-8"></script>
   </body>

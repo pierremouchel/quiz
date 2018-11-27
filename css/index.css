@@ -6,6 +6,9 @@
 body {
   margin : 0px;
 }
+button:focus {
+  outline: 0;
+}
 
 .block-page {
   background-image: linear-gradient(to bottom, orange, yellow);
@@ -45,4 +48,9 @@ body {
   font-weight: bold;
   cursor: pointer;
   margin: 10px 0px 10px 0px;
+}
+
+.modal .btn-modal {
+  background-color: #c9289b;
+  border: none;
 }
