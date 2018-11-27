@@ -1,0 +1,25 @@
+@font-face{
+    font-family : "titleFont";
+    src : url('../vendors/fonts/Pacifico-Regular.ttf');
+}
+
+body {
+  margin : 0px;
+}
+
+.block-title {
+  background-image: linear-gradient(to bottom, orange, yellow);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.block-title .title{
+  color: white;
+  font-family: 'titleFont', sans-serif, 'Arial';
+  font-size: 5rem;
+  margin: 0px;
+  height: 25%;
+  width: 25%;
+  text-align: center;
+}

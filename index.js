@@ -1,12 +1,11 @@
-var http = require('http');
-var fs = require('fs');
+var express = require('express');
 
-// Chargement du fichier index.html affiché au client
-var server = http.createServer(function(req, res) {
-    fs.readFile('./views/index.html', 'utf-8', function(error, content) {
-        res.writeHead(200, {"Content-Type": "text/html"});
-        res.end(content);
-    });
+var app = express();
+
+app.use(express.static(__dirname+'/'));
+
+app.get('/', function(req, res) {
+    res.render('index.ejs');
 });
 
-server.listen(8080);
+app.listen(8080);
