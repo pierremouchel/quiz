@@ -50,7 +50,24 @@ button:focus {
   margin: 10px 0px 10px 0px;
 }
 
+.modal .modal-content {
+  background-image: linear-gradient(to bottom, indianred, lightpink);
+}
+.modal .modal-title, .modal-header button, .modal label {
+  color: white;
+}
 .modal .btn-modal {
-  background-color: #c9289b;
+  background-color: indianred;
   border: none;
+}
+.modal .select-country {
+  display: flex;
+  flex-direction: column;
+}
+
+.country-select .flag-dropdown {
+  width: 100%;
+}
+.country-select .flag-dropdown .selected-flag {
+  width: 100%;
 }
