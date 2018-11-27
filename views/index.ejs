@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>BroQuiz</title>
+    <link rel="icon" href="/image/icon/favicon.ico" />
     <link rel="stylesheet" href="/vendors/css/font-awesome.min.css">
     <link rel="stylesheet" href="/vendors/css/bootstrap.min.css">
     <link rel="stylesheet" href="/vendors/css/countrySelect.min.css">
@@ -21,7 +22,7 @@
 
     <!-- Modal Signin -->
     <div class="modal fade" id="modalSignin" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalSigninTitle">Connexion</h5>
@@ -29,13 +30,26 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button type="button" class="btn btn-primary btn-modal">Valider</button>
-          </div>
+          <form method="post" action="/connect.html">
+            <div class="modal-body">
+              <div class="row mb-4">
+                <div class="col-12">
+                  <label for="connect-login">Pseudo / Email</label>
+                  <input type="text" class="form-control" id="connect-login" placeholder="Entrer votre pseudo ou votre email" name="connectLogin" autofocus>
+                </div>
+              </div>
+              <div class="row mb-4">
+                <div class="col-12">
+                  <label for="connect-password">Mot de passe</label>
+                  <input type="text" class="form-control" id="connect-password" placeholder="Entrer votre mot de passe" name="connectPassword">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+              <button type="submit" class="btn btn-primary btn-modal">Valider</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -55,7 +69,7 @@
               <div class="row mb-4">
                 <div class="col-6">
                   <label for="login">Pseudo</label>
-                  <input type="text" class="form-control" id="login" placeholder="Entrer votre pseudo">
+                  <input type="text" class="form-control" id="login" placeholder="Entrer votre pseudo" autofocus>
                 </div>
               </div>
 
@@ -105,6 +119,10 @@
 
       $("#country").countrySelect({
         preferredCountries: ['fr']
+      });
+
+      $('.modal').on('shown.bs.modal', function() {
+        $(this).find('[autofocus]').focus();
       });
 
     </script>
