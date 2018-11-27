@@ -1,0 +1,22 @@
+{
+  "name": "quiz",
+  "version": "1.0.0",
+  "description": "quiz with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pierremouchel/Quiz.git"
+  },
+  "author": "pierre & maxime",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pierremouchel/Quiz/issues"
+  },
+  "homepage": "https://github.com/pierremouchel/Quiz#readme",
+  "dependencies": {
+    "express.js": "^1.0.0"
+  }
+}
