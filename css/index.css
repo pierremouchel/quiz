@@ -11,27 +11,38 @@ body {
   background-image: linear-gradient(to bottom, orange, yellow);
   height: 100vh;
   width: 100vw;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
 }
 
+.block-title {
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .block-title .title {
   color: white;
   font-family: 'titleFont', sans-serif, 'Arial';
   font-size: 5rem;
-  margin: 0px;
-  height: 25%;
-  width: 25%;
-  text-align: center;
+  font-weight: bold;
 }
 
 .block-button {
+  height: 70vh;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .block-button .button {
   color: white;
   border: 2px solid white;
   border-radius: 3px;
+  background-color: transparent;
+  padding: 20px 0px 20px 0px;
+  width: 15%;
+  font-family: 'titleFont', sans-serif, 'Arial';
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px 0px 10px 0px;
 }
