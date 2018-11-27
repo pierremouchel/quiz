@@ -7,14 +7,16 @@ body {
   margin : 0px;
 }
 
-.block-title {
+.block-page {
   background-image: linear-gradient(to bottom, orange, yellow);
   height: 100vh;
   width: 100vw;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
-.block-title .title{
+
+.block-title .title {
   color: white;
   font-family: 'titleFont', sans-serif, 'Arial';
   font-size: 5rem;
@@ -22,4 +24,14 @@ body {
   height: 25%;
   width: 25%;
   text-align: center;
+}
+
+.block-button {
+  display: flex;
+  flex-direction: column;
+}
+.block-button .button {
+  color: white;
+  border: 2px solid white;
+  border-radius: 3px;
 }
