@@ -60,7 +60,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalSignupTitle">Inscription</h5>
-              <%if (error != '') { %>
+              <%if (typeof error != 'undefined') { %>
                 <div class="alert alert-danger error mb-0">
                   <%= error %>
                 </div>
@@ -74,29 +74,39 @@
                 <div class="row mb-4">
                   <div class="col-6">
                     <label for="login">Pseudo</label>
-                    <input type="text" class="form-control" id="login" placeholder="Entrer votre pseudo" name="login" autofocus>
+                    <input type="text" class="form-control" id="login" placeholder="Entrer votre pseudo" name="login" autofocus
+                    <%if (typeof login != 'undefined') { %>value="<%= login %>"<% } %>
+                    >
                   </div>
                 </div>
 
                 <div class="row mb-4">
                   <div class="col">
                     <label for="password">Mot de passe</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Entrer votre mot de passe">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Entrer votre mot de passe"
+                    <%if (typeof password != 'undefined') { %>value="<%= password %>"<% } %>
+                    >
                   </div>
                   <div class="col">
                     <label for="confpassword">Confirmation mot de passe</label>
-                    <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="Entrer votre mot de passe">
+                    <input type="password" class="form-control" id="confpassword" name="confpassword" placeholder="Entrer votre mot de passe"
+                    <%if (typeof confpassword != 'undefined') { %>value="<%= confpassword %>"<% } %>
+                    >
                   </div>
                 </div>
 
                 <div class="row mb-4">
                   <div class="col">
                     <label for="email">Email</label>
-                    <input type="text" class="form-control" id="mail" name="email" placeholder="Entrer votre email">
+                    <input type="text" class="form-control" id="mail" name="email" placeholder="Entrer votre email"
+                    <%if (typeof email != 'undefined') { %>value="<%= email %>"<% } %>
+                    >
                   </div>
                   <div class="col">
                     <label for="confemail">Confirmation email</label>
-                    <input type="text" class="form-control" id="confmail" name="confemail" placeholder="Entrer votre email">
+                    <input type="text" class="form-control" id="confmail" name="confemail" placeholder="Entrer votre email"
+                    <%if (typeof confemail != 'undefined') { %>value="<%= confemail %>"<% } %>
+                    >
                   </div>
                 </div>
 
@@ -129,6 +139,12 @@
       $('.modal').on('shown.bs.modal', function() {
         $(this).find('[autofocus]').focus();
       });
+
+      if (typeof(document.getElementsByClassName('error')[0].innerHTML) != 'undefined') {
+        $(window).on('load',function(){
+            $('#modalSignup').modal('show');
+        });
+      }
 
     </script>
   </body>
