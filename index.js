@@ -16,32 +16,6 @@ var connection = mysql.createConnection({
 connection.connect(function(err){});
 const entities = new Entities();
 
-function validateSignup(login,password,confpassword,email,confemail,country) {
-
-  if(validator.isEmpty(login) || validator.isEmpty(password) || validator.isEmpty(confpassword) || validator.isEmpty(email) || validator.isEmpty(confemail) || validator.isEmpty(country)){
-    error = 'Tout les champs ne sont pas complets !';
-  } else if (/\s/.test(login)) {
-    error = 'Votre pseudo ne doit pas contenir d\'espace !';
-  } else if (entities.encode(login) != login) {
-    error = 'Votre pseudo n\'est pas valide !';
-  } else if (login.length < 5) {
-    error = 'Votre pseudo doit contenir 5 caractères minimum !';
-  } else if (password.length < 5) {
-    error = 'Votre mot de passe doit contenir 5 caractères minimum !';
-  } else if (password != confpassword) {
-    error = 'Les mots de passe ne correspondent pas !';
-  } else if (validator.isEmail(email) == false) {
-    error = 'Votre email est invalide !';
-  } else if (email != confemail) {
-    error = 'Les email ne correspondent pas !';
-  } else if (validator.isEmpty(login) == false) {
-    connection.query("SELECT * FROM broquiz_user WHERE user_login = '"+login+"'", function (err, result, fields) {
-    }
-    error = 'none';
-  } else {
-    error = 'none';
-  }
-}
 function hashPwd(password) {
   var genRandomString = function(length){
     return crypto.randomBytes(Math.ceil(length/2))
@@ -80,15 +54,16 @@ function getDate() {
 }
 
 var app = express();
+var form_error;
 
 app.use(express.static(__dirname+'/'));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/', function(request, response) {
-  if (typeof error == 'undefined') {
+  if (typeof form_error == 'undefined') {
     response.render('index.ejs');
   } else {
-    response.render('index.ejs',{error:error,login:login,password:password,confpassword:confpassword,email:email,confemail:confemail,country:country});
+    response.render('index.ejs',{form_error:form_error,login:login,password:password,confpassword:confpassword,email:email,confemail:confemail,country:country});
   }
 
 });
@@ -106,11 +81,41 @@ app.post('/signup.html', function(request, response) {
   confemail = request.body.confemail.trim();
   country = request.body.country.trim();
 
-  validateSignup(login,password,confpassword,email,confemail,country);
+  var validation = new Promise((success,error) => {
+    if(validator.isEmpty(login) || validator.isEmpty(password) || validator.isEmpty(confpassword) || validator.isEmpty(email) || validator.isEmpty(confemail) || validator.isEmpty(country)){
+      error('Tout les champs ne sont pas complets !');
+    } else if (/\s/.test(login)) {
+      error('Votre pseudo ne doit pas contenir d\'espace !');
+    } else if (entities.encode(login) != login) {
+      error('Votre pseudo n\'est pas valide !');
+    } else if (login.length < 5) {
+      error('Votre pseudo doit contenir 5 caractères minimum !');
+    } else if (password.length < 5) {
+      error('Votre mot de passe doit contenir 5 caractères minimum !');
+    } else if (password != confpassword) {
+      error('Les mots de passe ne correspondent pas !');
+    } else if (validator.isEmail(email) == false) {
+      error('Votre email est invalide !');
+    } else if (email != confemail) {
+      error('Les email ne correspondent pas !');
+    } else if (validator.isEmpty(login) == false && validator.isEmpty(email) == false) {
+      connection.query("SELECT * FROM broquiz_user WHERE user_login = '"+login+"'", function (err, result, fields) {
+        if (result[0] != undefined) {
+          error('Ce pseudo est déjà utilisé !');
+        }
+      });
+      connection.query("SELECT * FROM broquiz_user WHERE user_email = '"+email+"'", function (err, result, fields) {
+        if (result[0] != undefined) {
+          error('Cet email est déjà utilisé !');
+        } else {
+          success('Tous les champs sont valides')
+        }
+      });
+    }
+  })
 
-  if (error != 'none') {
-    response.redirect('/');
-  } else {
+  validation
+  .then(function(success) {
     login = entities.encode(login);
     hashPwd(password);
     newpassword = passwordData.passwordHash;
@@ -135,8 +140,14 @@ app.post('/signup.html', function(request, response) {
     confemail = undefined;
     country = undefined;
 
+    form_error = undefined;
+
     response.redirect('/');
-  }
+  })
+  .catch(function(error) {
+    form_error = error;
+    response.redirect('/');
+  });
 
 });
 
