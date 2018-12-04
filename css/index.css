@@ -1,11 +1,5 @@
-@font-face{
-    font-family : "titleFont";
-    src : url('../vendors/fonts/Pacifico-Regular.ttf');
-}
+@import "common.css";
 
-body {
-  margin : 0px;
-}
 button:focus {
   outline: 0;
 }

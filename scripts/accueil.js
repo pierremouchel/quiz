@@ -1,0 +1,1 @@
+response.render('accueil.ejs');

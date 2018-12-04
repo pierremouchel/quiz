@@ -1,0 +1,80 @@
+@import "common.css";
+
+.block-wrapper{
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+
+/*---------------------------MAIN BLOCK---------------------------*/
+.main-block{
+  background-image: linear-gradient(to bottom, orange, yellow);
+}
+
+
+
+/*---------------------------FRIEND BLOCK---------------------------*/
+
+.status-indicator-wrapper{
+  height: 6vh;
+  padding : 0px 15px;
+  margin-top:10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.status-indicator{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid silver;
+  flex-basis: 30%;
+  padding-top, padding-bottom: 0;
+  font-size: 23px;
+}
+.btn.status-indicator{
+  color: white;
+}
+
+.btn.status-indicator .friend-img{
+  max-width: 50%;
+  max-height: 50%;
+  margin-right: 10%;
+}
+
+
+
+.friend-block{
+  padding: 0;
+  background-image: linear-gradient(to bottom, grey, silver);
+  box-shadow: -3px 0px 10px rgba(0,0,0,0.5);
+}
+
+.friend-list-block{
+  height: 100px;
+  overflow: auto;
+}
+.searchbar-block,
+.list{
+  padding: 0 15px;
+}
+.searchbar-block{
+  border-bottom: 1px solid grey;
+  padding-bottom: 20px;
+}
+.input-group-text.search{
+  justify-content: center;
+  padding: 0;
+}
+
+.search-img{
+  height: 60%;
+  width:55%;
+}
+.input-group>.custom-select:not(:last-child), .input-group>.form-control:not(:last-child) {/*MA GROSSE BITE*/
+ border-top-right-radius: 3px;
+ border-bottom-right-radius: 3px;
+}
+.input-group .button-add-friend{
+  font-weight: bold;
+}
