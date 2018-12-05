@@ -81,6 +81,7 @@ app.use(express.static(__dirname+'/'))
 
 .post('/addfriend', function(request, response){
   eval(fs.readFileSync('scripts/add_friend.js').toString());
+  console.log(request.session.user_id);
 })
 
 .listen(8080);
