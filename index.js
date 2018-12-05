@@ -79,4 +79,8 @@ app.use(express.static(__dirname+'/'))
   eval(fs.readFileSync('scripts/accueil.js').toString());
 })
 
+.get('/broquiz-friend', function(request, response){
+  eval(fs.readFileSync('scripts/broquiz-friend.js').toString());
+})
+
 .listen(8080);
