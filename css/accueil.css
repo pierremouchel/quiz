@@ -10,9 +10,6 @@
 .main-block{
   background-image: linear-gradient(to bottom, orange, yellow);
 }
-
-
-
 /*---------------------------FRIEND BLOCK---------------------------*/
 
 .friend-block{
@@ -33,15 +30,15 @@
   margin: 0px 15px;
   font-size: 23px;
   overflow: hidden;
-  height: 45px;
-  width: 100px;
+  height: 100%;
+  width: 100%;
 }
 .friend-block .status-indicator-wrapper .btn.status-indicator{
   color: white;
 }
 .friend-block .status-indicator-wrapper .status-indicator .friend-img{
-  height: 90%;
-  width: 75%;
+  width: 100%;
+  height: auto;
 }
 
 .friend-list-block{

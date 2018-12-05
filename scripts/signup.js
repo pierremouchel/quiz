@@ -57,16 +57,21 @@ validationSignup
     if (err) throw err;
   });
 
-  login = undefined;
-  password = undefined;
-  confpassword = undefined;
-  email = undefined;
-  confemail = undefined;
-  country = undefined;
-
   signup_error = undefined;
 
-  response.redirect('/');
+  connection.query("SELECT user_id, user_login FROM broquiz_user WHERE user_login = '"+login+"'", function (err, result, fields) {
+    request.session.user_id = result[0].user_id;
+    request.session.user_login = result[0].user_login;
+
+    login = undefined;
+    password = undefined;
+    confpassword = undefined;
+    email = undefined;
+    confemail = undefined;
+    country = undefined;
+
+    response.redirect('/accueil');
+  });
 })
 .catch(function(error) {
   signup_error = error;
