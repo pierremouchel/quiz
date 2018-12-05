@@ -15,18 +15,7 @@ button:focus {
   width: 0px;
 }
 
-.block-title {
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.block-title .title {
-  color: white;
-  font-family: 'titleFont', sans-serif, 'Arial';
-  font-size: 5rem;
-  font-weight: bold;
-}
+
 
 .block-button {
   height: 70vh;
