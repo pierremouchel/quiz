@@ -1,4 +1,5 @@
 var express = require('express');
+var session = require('cookie-session');
 var bodyParser = require("body-parser");
 var validator = require('validator');
 const Entities = require('html-entities').AllHtmlEntities;
@@ -50,7 +51,6 @@ function getDate() {
   if(mm<10) {
       mm = '0'+mm
   }
-
   today = yyyy + '-' + mm + '-' + dd + ' 00:00:00';
 }
 
@@ -61,10 +61,10 @@ var error_type = 0;
 
 app.use(express.static(__dirname+'/'))
 .use(bodyParser.urlencoded({ extended: true }))
+.use(session({secret: 'lorenzovonmatterhorn'}))
 
 .get('/', function(request, response) {
   eval(fs.readFileSync('scripts/default.js').toString());
-
 })
 
 .post('/signin', function(request, response) {
@@ -79,8 +79,8 @@ app.use(express.static(__dirname+'/'))
   eval(fs.readFileSync('scripts/accueil.js').toString());
 })
 
-.get('/broquiz-friend', function(request, response){
-  eval(fs.readFileSync('scripts/broquiz-friend.js').toString());
+.post('/addfriend', function(request, response){
+  eval(fs.readFileSync('scripts/add_friend.js').toString());
 })
 
 .listen(8080);

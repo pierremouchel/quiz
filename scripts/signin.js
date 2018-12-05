@@ -43,7 +43,11 @@ var validationSignin = new Promise((success,error) => {
 validationSignin
 .then(function(success) {
   error_type = 0;
-  response.redirect('/accueil');
+  connection.query("SELECT user_id, user_login FROM broquiz_user WHERE user_login = '"+signin_login+"'", function (err, result, fields) {
+    request.session.user_id = result[0].user_id;
+    request.session.user_login = result[0].user_login;
+    response.redirect('/accueil');
+  });
 })
 .catch(function(error) {
   signin_error = error;

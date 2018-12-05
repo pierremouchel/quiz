@@ -4,11 +4,11 @@
     src : url('../vendors/fonts/Pacifico-Regular.ttf');
 }
 body{
-  box-sizing: content-box;
   width: 100vw;
   height: 100vh;
   margin : 0px;
 }
+<<<<<<< HEAD
 .block-page {
   background-image: linear-gradient(to bottom, orange, yellow);
   height: 100vh;
@@ -29,11 +29,9 @@ body{
 img{
   max-height: 100%;
 }
+=======
+>>>>>>> afbf9319a5ece8f7bcd600e71ec254c6bb030d60
 ul{
   list-style: none;
   padding-left: 0;
-}
-
-
-.scroll{
 }
