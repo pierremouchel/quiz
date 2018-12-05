@@ -8,7 +8,32 @@ body{
   height: 100vh;
   margin : 0px;
 }
-<<<<<<< HEAD
+
+ul{
+  list-style: none;
+  padding-left: 5px;
+}
+
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #6;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: orange;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
 .block-page {
   background-image: linear-gradient(to bottom, orange, yellow);
   height: 100vh;
