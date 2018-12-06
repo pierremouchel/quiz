@@ -1,6 +1,6 @@
-friend_login = request.body.friendLogin.trim();
-console.log(request.session.user_id);
-var validationFriend = new Promise((success,error) => {
+friend_login = friendLogin;
+
+/*var validationFriend = new Promise((success,error) => {
   if(validator.isEmpty(friend_login)){
     error('Le champ est vide !');
   } else {
@@ -40,4 +40,4 @@ validationFriend
 .catch(function(error) {
   console.log(error);
   response.redirect('/accueil');
-});
+});*/

@@ -34,8 +34,7 @@ var validationSignin = new Promise((success,error) => {
         error('Ce login n\'existe pas !');
       } else {
         if (sha512(signin_password, result[0].user_salt).passwordHash == result[0].user_password) {
-          socket.handshake.session.user_id = result[0].user_id;
-          socket.handshake.session.user_login = result[0].user_login;
+          socket.handshake.session.user = {userlogin:result[0].user_login};
           socket.handshake.session.save();
           success('Connected');
         } else {

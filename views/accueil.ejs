@@ -24,8 +24,7 @@
 
         </div>
 
-        <div class="friend-list-wrapper" id="test-list">
-
+        <div class="friend-list-wrapper" id="friend-list">
           <div class=" searchbar-block">
             <div class="input-group-prepend" >
               <div class="img-contener">
@@ -49,12 +48,17 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="/vendors/js/jquery-3.3.1.min.js" charset="utf-8"></script>
-
   <script src="/vendors/js/list.min.js" charset="utf-8"></script>
   <script type="text/javascript">
+    var socket = io.connect('http://10.2.4.26:8080');
 
-    var list = new List('test-list', {
+    var list = new List('friend-list', {
       valueNames: ['name']
     });
+
+    function addFriend(){
+      socket.emit('add_friend', $('#friendLogin').val());
+    }
+
   </script>
 </html>

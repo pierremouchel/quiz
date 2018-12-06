@@ -82,15 +82,15 @@ app.use(express.static(__dirname+'/'))
   eval(fs.readFileSync('scripts/accueil.js').toString());
 })
 
-.post('/addfriend', function(request, response){
-  eval(fs.readFileSync('scripts/add_friend.js').toString());
-});
-
 io.on('connection', function (socket) {
+
   socket.on('signin', function (login, password) {
     eval(fs.readFileSync('scripts/signin.js').toString());
   });
   socket.on('signup', function (login, password, confpassword, email, confemail, country) {
     eval(fs.readFileSync('scripts/signup.js').toString());
+  });
+  socket.on('add_friend', function (userLogin, friendLogin){
+    eval(fs.readFileSync('scripts/add_friend.js').toString());
   });
 });
