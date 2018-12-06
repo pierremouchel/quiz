@@ -71,11 +71,9 @@ validationSignup
     signup_confemail = undefined;
     signup_country = undefined;
 
-    socket.emit('connection_redirect', '/accueil');
+    socket.emit('redirect', '/accueil');
   });
 })
 .catch(function(error) {
-  signup_error = error;
-  error_type = 2;
-  socket.emit('connection_redirect', '/');
+  socket.emit('inscription_error', error);
 });

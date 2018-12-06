@@ -48,8 +48,8 @@ var validationSignin = new Promise((success,error) => {
 
 validationSignin
 .then(function(success) {
-  socket.emit('connection_redirect', '/accueil');
+  socket.emit('redirect', '/accueil');
 })
 .catch(function(error) {
-  socket.emit('connection_error', error, signin_login, signin_password);
+  socket.emit('connection_error', error);
 });
