@@ -1,5 +1,5 @@
 friend_login = request.body.friendLogin.trim();
-
+console.log(request.session.user_id);
 var validationFriend = new Promise((success,error) => {
   if(validator.isEmpty(friend_login)){
     error('Le champ est vide !');
