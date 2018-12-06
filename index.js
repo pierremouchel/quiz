@@ -1,5 +1,5 @@
 var express = require('express');
-var session = require('cookie-session');
+var app = require('express')();
 var bodyParser = require("body-parser");
 var validator = require('validator');
 const Entities = require('html-entities').AllHtmlEntities;
@@ -7,6 +7,23 @@ var mysql = require('mysql');
 const crypto = require('crypto');
 var datetime = require('node-datetime');
 var fs = require ('fs');
+var server  = require("http").createServer(app);
+var io = require("socket.io")(server);
+
+var session = require("express-session")({
+    secret: "lorenzovonmatterhorn",
+    resave: true,
+    saveUninitialized: true
+  }),
+  sharedsession = require("express-socket.io-session");
+
+app.use(session);
+
+io.use(sharedsession(session, {
+    autoSave:true
+}));
+
+server.listen(8080);
 
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -54,25 +71,15 @@ function getDate() {
   today = yyyy + '-' + mm + '-' + dd + ' 00:00:00';
 }
 
-var app = express();
 var signup_error;
 var signin_error;
 var error_type = 0;
 
 app.use(express.static(__dirname+'/'))
 .use(bodyParser.urlencoded({ extended: true }))
-.use(session({secret: 'lorenzovonmatterhorn'}))
 
 .get('/', function(request, response) {
   eval(fs.readFileSync('scripts/default.js').toString());
-})
-
-.post('/signin', function(request, response) {
-  eval(fs.readFileSync('scripts/signin.js').toString());
-})
-
-.post('/signup', function(request, response) {
-  eval(fs.readFileSync('scripts/signup.js').toString());
 })
 
 .get('/accueil', function(request, response){
@@ -81,6 +88,13 @@ app.use(express.static(__dirname+'/'))
 
 .post('/addfriend', function(request, response){
   eval(fs.readFileSync('scripts/add_friend.js').toString());
-})
+});
 
-.listen(8080);
+io.on('connection', function (socket) {
+  socket.on('signin', function (login, password) {
+    eval(fs.readFileSync('scripts/signin.js').toString());
+  });
+  socket.on('signup', function (login, password, confpassword, email, confemail, country) {
+    eval(fs.readFileSync('scripts/signup.js').toString());
+  });
+});

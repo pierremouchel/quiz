@@ -13,7 +13,6 @@
   <body>
     <div class='row block-wrapper'>
       <div class="block main-block">
-
       </div>
       <div class="block friend-block ">
 
@@ -28,16 +27,13 @@
         <div class="friend-list-wrapper" id="test-list">
 
           <div class=" searchbar-block">
-            <form class="add-form" action="/addfriend" method="post">
-
-              <div class="input-group-prepend" >
-                <div class="img-contener">
-                  <img src="/image/icon/search.png" class="search-img" alt="">
-                </div>
-                <input type="text" class="form-control instant-search" name="friendLogin" placeholder="Search friend" aria-label="Username" aria-describedby="basic-addon1">
+            <div class="input-group-prepend" >
+              <div class="img-contener">
+                <img src="/image/icon/search.png" class="search-img" alt="">
               </div>
-              <button type="submit" name="button" class="btn btn-light button-add-friend ml-2">+</button>
-            </form>
+              <input type="text" class="form-control instant-search" id="friendLogin" name="friendLogin" placeholder="Search friend" aria-label="Username" aria-describedby="basic-addon1" onclick="addFriend()">
+            </div>
+            <button type="button" name="button" class="btn btn-light button-add-friend ml-2" onclick="addFriend()">+</button>
           </div>
 
           <div class="scroll friend-list-block">
@@ -103,10 +99,12 @@
     </div><!--end block-wrapper-->
   </body>
 
+  <script src="/socket.io/socket.io.js"></script>
   <script src="/vendors/js/jquery-3.3.1.min.js" charset="utf-8"></script>
 
   <script src="/vendors/js/list.min.js" charset="utf-8"></script>
   <script type="text/javascript">
+
     var list = new List('test-list', {
       valueNames: ['name']
     });

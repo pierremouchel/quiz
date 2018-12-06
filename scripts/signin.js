@@ -1,5 +1,5 @@
-signin_login = request.body.connectLogin.trim();
-signin_password = request.body.connectPassword.trim();
+signin_login = login;
+signin_password = password;
 
 var sha512 = function(password, salt){
   var hash = crypto.createHmac('sha512', salt); /** Hashing algorithm sha512 */
@@ -44,13 +44,14 @@ validationSignin
 .then(function(success) {
   error_type = 0;
   connection.query("SELECT user_id, user_login FROM broquiz_user WHERE user_login = '"+signin_login+"'", function (err, result, fields) {
-    request.session.user_id = result[0].user_id;
-    request.session.user_login = result[0].user_login;
-    response.redirect('/accueil');
+    socket.handshake.session.user_id = result[0].user_id;
+    socket.handshake.session.user_login = result[0].user_login;
+    socket.handshake.session.save();
+    socket.emit('connection_redirect', '/accueil');
   });
 })
 .catch(function(error) {
   signin_error = error;
   error_type = 1;
-  response.redirect('/');
+  socket.emit('connection_redirect', '/');
 });
