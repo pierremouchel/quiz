@@ -1,78 +1,133 @@
 @import "common.css";
 
-.block-wrapper{
-  width: 100%;
-  height: 100%;
-  margin: 0px;
+body{
+  width: auto;
+  height: 100vh;
 }
-
-/*---------------------------MAIN BLOCK---------------------------*/
-.main-block{
-  background-image: linear-gradient(to bottom, orange, yellow);
+.btn{
+  border-radius: 6px;
 }
-/*---------------------------FRIEND BLOCK---------------------------*/
-
-.friend-block{
-  padding: 0px;
-  background-image: linear-gradient(to bottom, grey, silver);
-  box-shadow: -3px 0px 10px rgba(0,0,0,0.5);
-}
-.friend-block .status-indicator-wrapper{
-  height: 8vh;
-  padding: 15px 15px;
-  display: flex;
-  justify-content: space-around;
-}
-.friend-block .status-indicator-wrapper .status-indicator{
-  display: flex;
-  align-items: center;
-  border: 1px solid silver;
-  margin: 0px 15px;
-  font-size: 23px;
-  overflow: hidden;
-  height: 100%;
-  width: 100%;
-}
-.friend-block .status-indicator-wrapper .btn.status-indicator{
-  color: white;
-}
-.friend-block .status-indicator-wrapper .status-indicator .friend-img{
-  width: 100%;
-  height: auto;
-}
-
-.friend-list-block{
+.scroll{
   overflow: auto;
 }
-.friend-block .friend-list-wrapper{
-  height: 92vh;
+
+.add-form{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-right: 5%;
 }
-.friend-block .friend-list-wrapper .searchbar-block{
+
+
+.block-wrapper{
+  display: flex;
+}
+
+.main-block{
+  background-image: linear-gradient(to bottom, orange, yellow);
+  flex-basis: 75%;
+}
+.friend-block{
+  background-image: linear-gradient(to bottom, grey, silver);
+  box-shadow: -5px 0px 10px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  flex-basis: 25%;
+  height: 100vh;
+
+}
+
+
+
+/*------------------------------STATUS INDICATOR---------------------------------*/
+
+.status-indicator-wrapper{
   height: 8vh;
-  border-bottom: 1px solid grey;
-  padding-bottom: 20px;
-}
-.friend-block .friend-list-wrapper .searchbar-block .input-group-text.search{
-  justify-content: center;
-  padding: 0;
-}
-.friend-block .friend-list-wrapper .searchbar-block .form-control{
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-.friend-block .friend-list-wrapper .friend-list-block{
-  height: 84vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
 }
 
-.searchbar-block,
-.list{
-  padding: 0 15px;
+.status-indicator{
+  flex-basis: 25%;
 }
-
-.search-img{
-  height: 60%;
-  width:55%;
+.friend-img{
+  height: 40px;
 }
-.input-group .button-add-friend{
+.friend-number{
+  font-size: 1rem;
   font-weight: bold;
+}
+.btn.status-indicator{
+  padding: 1%;
+}
+.btn-co{
+  background-color: green;
+}
+.btn-away{
+  background-color: yellow;
+}
+.btn-disco{
+  background-color: red;
+}
+
+
+/*------------------------------SEARCH BAR---------------------------------*/
+
+
+.searchbar-block{
+  box-shadow: 0px 5px 6px rgba(0,0,0,0.2);
+  padding-bottom: 2vh;
+  display: flex;
+  justify-content: space-between;
+  padding-left:5%;
+}
+
+.instant-search{
+  border: none;
+  width: 100%;
+  border-radius: 0 5px 5px 0;
+  padding: 0 5px;
+}
+
+.input-group-prepend{
+  display: flex;
+  border: 1px solid silver;
+  width: 80%;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+  border-radius: 5px;
+}
+.search-img{
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+
+.img-contener{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  background-color: #f0f0f0;
+  padding: 0 5px;
+}
+
+.button-add-friend {
+  min-width: 12%;
+  max-width: 15%;
+  box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
+}
+
+
+.friend-list-block{
+  height: 80vh;
+  padding-left:5%;
+}
+.friend-list-wrapper{
+  height: 88vh;
+
 }

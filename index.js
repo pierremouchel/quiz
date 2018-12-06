@@ -71,10 +71,6 @@ function getDate() {
   today = yyyy + '-' + mm + '-' + dd + ' 00:00:00';
 }
 
-var signup_error;
-var signin_error;
-var error_type = 0;
-
 app.use(express.static(__dirname+'/'))
 .use(bodyParser.urlencoded({ extended: true }))
 

@@ -11,7 +11,6 @@
   </head>
   <body>
     <div class="block-page">
-      <div class="error-type"><%= error_type %></div>
       <div class="block-title">
         <h1 class="title">BroQuiz</h1>
       </div>
@@ -27,11 +26,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="modalSigninTitle">Connexion</h5>
-            <%if (typeof signin_error != 'undefined') { %>
-              <div class="alert alert-danger signin-error mb-0">
-                <%= signin_error %>
-              </div>
-            <% } %>
+              <div class="alert alert-danger signin-error mb-0" id="connectError"></div>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -40,17 +35,13 @@
             <div class="row mb-4">
               <div class="col-12">
                 <label for="connect-login">Pseudo / Email</label>
-                <input type="text" class="form-control" id="connect-login" placeholder="Entrer votre pseudo ou votre email" name="connectLogin" autofocus
-                <%if (typeof signin_login != 'undefined') { %>value="<%= signin_login %>"<% } %>
-                >
+                <input type="text" class="form-control" id="connect-login" placeholder="Entrer votre pseudo ou votre email" name="connectLogin" autofocus>
               </div>
             </div>
             <div class="row mb-4">
               <div class="col-12">
                 <label for="connect-password">Mot de passe</label>
-                <input type="password" class="form-control" id="connect-password" placeholder="Entrer votre mot de passe" name="connectPassword"
-                <%if (typeof signin_password != 'undefined') { %>value="<%= signin_password %>"<% } %>
-                >
+                <input type="password" class="form-control" id="connect-password" placeholder="Entrer votre mot de passe" name="connectPassword">
               </div>
             </div>
           </div>
@@ -148,20 +139,6 @@
         $(this).find('[autofocus]').focus();
       });
 
-      //Display modal signin
-      if (document.getElementsByClassName('error-type')[0].innerHTML == 1) {
-        $(window).on('load',function(){
-            $('#modalSignin').modal('show');
-        });
-      }
-
-      //Display modal signup
-      if (document.getElementsByClassName('error-type')[0].innerHTML == 2) {
-        $(window).on('load',function(){
-            $('#modalSignup').modal('show');
-        });
-      }
-
       function signin(){
         socket.emit('signin', $('#connect-login').val(), $('#connect-password').val());
       }
@@ -171,6 +148,9 @@
 
       socket.on('connection_redirect', function(destination) {
         window.location.href = destination;
+      });
+      socket.on('connection_error', function(error, login, password) {
+        $('#connectError').html(error);
       });
 
     </script>
